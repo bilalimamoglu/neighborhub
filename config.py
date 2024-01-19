@@ -1,5 +1,7 @@
+from dotenv import load_dotenv
 import os
-CLIENT_ID = os.getenv("CLIENT_ID")
+
+load_dotenv()
 
 EVENTS_URL = os.getenv("EVENTS_URL")
 CALENDAR_RESOURCES_URL = os.getenv("CALENDAR_RESOURCES_URL")

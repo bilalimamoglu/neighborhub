@@ -27,9 +27,6 @@ events_df = pd.read_csv(EVENTS_URL)
 calendar_resources_df = pd.read_csv(CALENDAR_RESOURCES_URL)
 control_variables_df = pd.read_csv(CONTROL_VARIABLES_URL)
 
-st.dataframe(calendar_resources_df)
-st.dataframe(control_variables_df)
-
 events_for_calendar = events_df.to_dict(orient='records')
 calendar_resources_for_calendar = calendar_resources_df.to_dict(orient='records')
 control_variables_df = control_variables_df.to_dict(orient='records')
@@ -52,30 +49,36 @@ calendar_options = {
         "right": "resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth",
         "backgroundColor": "blue"
     },
+    "slotMinTime": "08:00:00",
+    "slotMaxTime": "23:00:00",
     "initialDate": "2024-05-01",
+    "height": "auto",
     "initialView": "resourceTimelineDay",
     "resourceGroupField": "Straße",
 }
 
-state = calendar(
-    events=st.session_state.get("events", events_for_calendar),
-    options=calendar_options,
-    custom_css="""
-    .fc-event-past {
-        opacity: 0.8;
-    }
-    .fc-event-time {
-        font-style: italic;
-    }
-    .fc-event-title {
-        font-weight: 700;
-    }
-    .fc-toolbar-title {
-        font-size: 2rem;
-    }
-    """,
-    key='resource-timeline',
-)
+col1, col2, col3 = st.columns([1, 13, 1])  # Adjust the middle number to control the width
+
+with col2:  # This is where the calendar will be displayed
+    state = calendar(
+        events=st.session_state.get("events", events_for_calendar),
+        options=calendar_options,
+        custom_css="""
+        .fc-event-past {
+            opacity: 0.8;
+        }
+        .fc-event-time {
+            font-style: italic;
+        }
+        .fc-event-title {
+            font-weight: 700;
+        }
+        .fc-toolbar-title {
+            font-size: 2rem;
+        }
+        """,
+        key='resource-timeline',
+    )
 
 if state.get("eventsSet") is not None:
     st.session_state["events"] = state["eventsSet"]
