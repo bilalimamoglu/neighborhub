@@ -16,7 +16,7 @@
 
 ### Deployment
 - The application is deployed using the free tier of Streamlit sharing.
-- Access the deployed app at [Streamlit App URL](your_streamlit_app_url).
+- Access the deployed app at [Streamlit App URL](https://neighborcalendar.streamlit.app/).
 
 ### Online Code Repository
 - GitHub Repository: [GitHub Link](https://github.com/bilalimamoglu/neighborhub)
