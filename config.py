@@ -1,9 +1,8 @@
-from dotenv import load_dotenv
+import streamlit as st
 import os
 
-load_dotenv()
 
-EVENTS_URL = os.getenv("EVENTS_URL")
-CALENDAR_RESOURCES_URL = os.getenv("CALENDAR_RESOURCES_URL")
-CONTROL_VARIABLES_URL = os.getenv("CONTROL_VARIABLES_URL")
+EVENTS_URL = st.secrets["EVENTS_URL"]
+CALENDAR_RESOURCES_URL = st.secrets["CALENDAR_RESOURCES_URL"]
+CONTROL_VARIABLES_URL = st.secrets["CONTROL_VARIABLES_URL"]
 LOGO_PATH = os.path.join('resources', 'asset.png')
