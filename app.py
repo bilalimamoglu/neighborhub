@@ -74,8 +74,12 @@ with col2:  # This is where the calendar will be displayed
             font-weight: 700;
         }
         .fc-toolbar-title {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
+        .fc-header-toolbar {
+        font-size: 12px; /* Smaller font size */
+        height: 30px; /* Smaller height */
+}
         """,
         key='resource-timeline',
     )
